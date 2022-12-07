@@ -78,8 +78,10 @@ console.log(this.headerComponent)
         console.log('onchangs is called')
       }
       ngAfterViewInit():void {
-        
           console.log(this.headerComponent)
+          console.log(this.headerChildrenComponent)
+          this.headerChildrenComponent.last.title = 'Last Title' // not working
+          this.headerChildrenComponent.destroy; // not working 
       }
       ngAfterViewChecked(): void {
         this.headerComponent.title = "Rooms view"

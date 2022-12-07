@@ -5,23 +5,25 @@ import { RoomList } from '../rooms/rooms';
   selector: 'hinv-rooms-list',
   templateUrl: './rooms-list.component.html',
   styleUrls: ['./rooms-list.component.scss'],
-  changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoomsListComponent implements OnInit,OnChanges {
-@Input () rooms:RoomList[] = []
-@Output() onSelect = new EventEmitter<RoomList>()
-@Input() title!:string;
-ngOnChanges(changes: SimpleChanges): void {
-  if (changes['title']) {
-    this.title = changes['title'].currentValue.toUpperCase()
+export class RoomsListComponent implements OnInit, OnChanges {
+  @Input() rooms: RoomList[] = [];
+  @Output() onSelect = new EventEmitter<RoomList>();
+  @Input() title!: string;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['title']) {
+      this.title = changes['title'].currentValue.toUpperCase();
+    }
+    console.log(changes);
   }
-  console.log(changes)
-}
-ngOnInit(): void {
-  
-}
+  ngOnInit(): void {}
 
-selectRoom(room:RoomList) {
-  this.onSelect.emit(room)
-}
+  selectRoom(room: RoomList) {
+    this.onSelect.emit(room);
+  }
+
+  ngonDestroy() {
+    console.log('on destroy is called');
+  }
 }
