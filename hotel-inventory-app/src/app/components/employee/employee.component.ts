@@ -9,7 +9,7 @@ import { RoomsService } from '../rooms/services/rooms.service';
 })
 export class EmployeeComponent implements OnInit, AfterContentInit {
   empname: string = 'Horatio';
-  constructor(@Self() private roomService : RoomsService) {
+  constructor( private roomService : RoomsService) {
   }
   @ContentChild(EmployeeComponent) employee! : EmployeeComponent
   ngOnInit(): void {

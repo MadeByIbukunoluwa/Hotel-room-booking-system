@@ -51,6 +51,6 @@ export class RoomsService {
       console.log('Room services initialized')
    }
    getRooms() {
-    return this.roomlist
+    return this.roomlist 
    }
 }
