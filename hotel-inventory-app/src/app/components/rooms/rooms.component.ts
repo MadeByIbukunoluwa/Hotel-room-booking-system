@@ -1,6 +1,7 @@
 import { Component,DoCheck,OnInit,AfterViewInit, ViewChild, AfterViewChecked, ViewChildren, QueryList } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { Room, RoomList } from './rooms';
+import { RoomsService } from './services/rooms.service';
 @Component({
   selector: 'hinv-rooms',
   templateUrl: './rooms.component.html',
@@ -25,53 +26,13 @@ roomlist :RoomList[] = []
 @ViewChildren(HeaderComponent)headerChildrenComponent!: QueryList<HeaderComponent> 
 
 title!:string;
-  constructor(){
-    
+  constructor(private roomsService : RoomsService){
+      this.roomlist = this.roomsService.getRooms();
+      
   }
   ngOnInit(): void {
-      this.roomlist = [
-      {
-        roomNumber: 33,
-        roomType:'Deluxe Room',
-        amenities:'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-        price: 500,
-        photos : '',
-        checkinTime: new Date('25-Nov-2022'),
-        checkoutTime: new Date('26-Nov-2022'),
-        rating:4.7
-    },
-      {
-        roomNumber: 30,
-        roomType:'Deluxe Room',
-        amenities:'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-        price: 590,
-        photos : '',
-        checkinTime: new Date('25-Nov-2022'),
-        checkoutTime: new Date('26-Nov-2022'),
-        rating:4.7
-    },
-      {
-        roomNumber: 24,
-        roomType:'Deluxe Room',
-        amenities:'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-        price: 500,
-        photos : '',
-        checkinTime: new Date('25-Nov-2022'),
-        checkoutTime: new Date('26-Nov-2022'),
-        rating:4.4
-    },
-      {
-        roomNumber: 53,
-        roomType:'Private Suite',
-        amenities:'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-        price: 1000,
-        photos : '',
-        checkinTime: new Date('25-Nov-2022'),
-        checkoutTime: new Date('26-Nov-2022'),
-        rating:4
-    },
+      
 
-  ]
 console.log(this.headerComponent) 
   }
       ngDoCheck(): void {

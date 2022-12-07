@@ -21,9 +21,9 @@
     </button>
 </div>
 
+<!-- rooms.availableRooms > 0 -->
 
-
-<div *ngIf="rooms.availableRooms > 0 ">
+<div *ngIf="hideRooms">
   <hinv-rooms-list [rooms] = "roomlist" [title]="title"  (onSelect)="selectRoom($event)"></hinv-rooms-list>
 </div>
 
