@@ -8,7 +8,7 @@ import { RoomList } from '../rooms/rooms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RoomsListComponent implements OnInit, OnChanges {
-  @Input() rooms: RoomList[] = [];
+  @Input() rooms: RoomList[] | null = [];
   @Output() onSelect = new EventEmitter<RoomList>();
   @Input() title!: string;
   ngOnChanges(changes: SimpleChanges): void {
