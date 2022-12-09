@@ -27,6 +27,11 @@
 <h1>
     {{getError$ | async}}
 </h1>
+
+<h1>
+   Number of rooms:  {{roomsCount$ | async}}
+</h1>
+
 <div *ngIf="room$ | async as rooms" > 
   <hinv-rooms-list [rooms] = "room$ | async"  [title]="title"  (onSelect)="selectRoom($event)"></hinv-rooms-list>
 </div>

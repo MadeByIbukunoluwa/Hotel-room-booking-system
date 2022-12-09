@@ -1,6 +1,6 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component,DoCheck,OnDestroy, OnInit,AfterViewInit, ViewChild, AfterViewChecked, ViewChildren, QueryList } from '@angular/core';
-import { catchError, Observable, of, Subscription,Subject, } from 'rxjs';
+import { catchError, Observable, of, Subscription,Subject,map } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
 import { Room, RoomList } from './rooms';
 import { RoomsService } from './services/rooms.service';
@@ -33,7 +33,7 @@ stream = new Observable<string>(observer => {
 totalBytes = 0
 
 
-error$!: Subject<string> 
+error$ = new Subject<string>() 
 
 getError$ = this.error$.asObservable()
 
@@ -44,7 +44,9 @@ room$ = this.roomsService.getRooms$.pipe(
     return of([])
   })
 )
-
+roomsCount$ = this.roomsService.getRooms$.pipe(
+  map((rooms) => rooms.length)
+)
 
 
 

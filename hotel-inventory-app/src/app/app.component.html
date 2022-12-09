@@ -1,20 +1,18 @@
-
+<!-- 
 <hinv-rooms></hinv-rooms>
 
-<!-- 
+
 <hinv-container>
     <hinv-rooms>
-    </hinv-rooms> -->
-    <hinv-employee>
-    </hinv-employee> 
-    <!-- <h1>This is from ng-content</h1>
-</hinv-container> -->
-
+    </hinv-rooms>
+    <hinv-employee></hinv-employee>
+    <h1>This is from ng-content</h1>
+</hinv-container>
 
 <div #name>
 
 </div>
-<!-- 
+
 
 
 <div [ngSwitch]="role">
@@ -27,7 +25,19 @@
     </div>
 </div> -->
 <!-- 
+
+
 <div>
     <ng-template #user></ng-template>
     <h1>Welcome User </h1>
 </div> -->
+
+ -->
+<!--  
+ <a [routerLink]="['/rooms']" routerLinkActive="router-link-active">Rooms </a>
+ <a [routerLink]="['/employee']" routerLinkActive="router-link-active">employee </a> -->
+
+
+ <hinv-app-nav></hinv-app-nav>
+ <router-outlet></router-outlet>
+

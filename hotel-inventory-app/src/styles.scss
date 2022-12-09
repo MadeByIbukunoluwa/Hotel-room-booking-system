@@ -9,7 +9,12 @@
     background-color: tomato;
     color: white;
 }
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
+html,
+body {
+    height: 100%;
+}
 
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

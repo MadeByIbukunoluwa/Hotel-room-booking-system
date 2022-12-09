@@ -3,7 +3,7 @@ import { RoomList } from '../rooms';
 import { environment } from 'src/environment/environment';
 import { APP_SERVICE_CONFIG } from 'src/app/AppConfig/appconfig.service';
 import { AppConfig } from 'src/app/AppConfig/appconfig.interface';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { shareReplay } from 'rxjs';
 @Injectable({
   providedIn: 'root',
@@ -51,9 +51,12 @@ export class RoomsService {
     //   rating: 4,
     // },
   ];
-  getRooms$ = this.http.get<RoomList[]>('api/rooms').pipe(
-    shareReplay(1)
-  )
+  // getRooms$ = this.http.get<RoomList[]>('api/roomsoo')
+  // returns a Http failure response for http://localhost:4200/api/roomsoo : 404 Not found
+  getRooms$ = this.http.get<RoomList[]>('api/rooms')
+  // .pipe(
+  //   shareReplay(1)
+  // )
   constructor(
     @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
     private http: HttpClient
@@ -61,11 +64,14 @@ export class RoomsService {
     console.log(this.config.apiEndpoint);
     console.log('Room services initialized');
   }
+  //  headers = new HttpHeaders({'token':'4hfeweoewkxowex39240'})
   getRooms() {
     return this.http.get<RoomList[]>('/api/rooms');
   }
   addRoom(room: RoomList) {
-    return this.http.post<RoomList[]>('/api/rooms', room);
+    return this.http.post<RoomList[]>('/api/rooms', room,
+    // {headers:this.headers}
+    );
   }
   editRoom(room: RoomList) {
     return this.http.put<RoomList[]>(`/api/rooms/${room.roomNumber}`, room);

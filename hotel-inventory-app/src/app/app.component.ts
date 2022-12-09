@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   @Inject(LocalStorageToken) private localStorage:Storage) {
 
   }
-  @ViewChild(`name`,{static:true}) name!:ElementRef;
+  // @ViewChild(`name`,{static:true}) name!:ElementRef;
 
   // @ViewChild(`user`,{read:ViewContainerRef}) vcr!:ViewContainerRef 
   // ngAfterViewInit(): void {
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
  
 ngOnInit() {
   this.loggerService?.log(`AppComponent.ngOnInit()`)
-  this.name.nativeElement.innerText = 'Ibukunoluwa Hotel'
+  // this.name.nativeElement.innerText = 'Ibukunoluwa Hotel'
   this.localStorage.setItem('name','Ibukunoluwa Hotel')
 }
 

@@ -1,0 +1,50 @@
+<!-- {{roomsForm.errors | json}}
+{{roomsForm.dirty | json}}
+{{roomsForm.valid | json}}
+{{roomsForm.invalid | json}}
+{{roomsForm.value | json}} -->
+
+<h1>hello</h1>
+
+<div *ngif= "successMessage !== ''" class="alert alert-success">
+    {{successMessage}}
+</div>
+<form #roomsForm= "ngForm" (ngSubmit) = "AddRoom(roomsForm)" action="">
+    <div class="form-group">
+        <input required class="form-control" type="text" name ="roomType" [(ngModel)] = "room.roomType"placeholder="Room Type" ></div>
+    <div class="form-group">
+        <input #roomamenities = "ngModel" required minLength="5" maxLength ="20" class="form-control" type="text" name ="amenities" [(ngModel)] = "room.amenities" placeholder="Amenities">
+    </div>
+    <div class = "alert alert-danger" *ngif="roomamenities.errors?.['minlength']">
+        Amenities should be min 5 chars 
+    </div>
+
+   <div *ngIf="roomamenities.dirty && roomamenities.errors?.['required']">
+    <!-- {{roomamenities.errors | json}} -->
+    Please provide required parameters 
+   </div>
+     <!-- error not working -->
+    <div class="form-group">
+        <input class="form-control" required type="number" name ="price" [(ngModel)] = "room.price" placeholder="Room Price per night">
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" required type="text" name ="photos" [(ngModel)] = "room.photos" placeholder="Photos (Provide Link)">
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" required type="text" name ="checkinTime" [(ngModel)] = "room.checkinTime" placeholder="Check-in Time">
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" required type="text" name ="checkoutTime" [(ngModel)] = "room.checkoutTime" placeholder="Check-out Time">
+    </div>
+        
+    <div class="form-group">
+        <input min = "1" max ="5" class="form-control" type="number" name ="rating" [(ngModel)] = "room.rating"placeholder="Rating"></div>
+    <div>
+        <button [disabled] = "roomsForm.invalid" type ="submit" class="btn btn-primary">
+                Submit 
+        </button>
+    </div>
+</form>
