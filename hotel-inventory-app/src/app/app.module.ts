@@ -4,9 +4,6 @@ import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RoomsComponent } from './components/rooms/rooms.component';
-import { RoomsListComponent } from './components/rooms-list/rooms-list.component';
-import { HeaderComponent } from './components/header/header.component';
 import { ContainerComponent } from './components/container/container.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './AppConfig/appconfig.service';
@@ -21,10 +18,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { RoomsBookingComponent } from './rooms-booking/rooms-booking.component';
-import { RoomAddComponent } from './components/room-add/room-add.component';
+
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { HoverDirective } from './hover.directive';
+import { EmailvalidatorDirective } from './emailvalidator/emailvalidator.directive';
+import { RoomsModule } from './components/rooms/rooms.module';
 
 function initFactory (initService: InitService) {
     return () => initService.init()
@@ -32,18 +31,16 @@ function initFactory (initService: InitService) {
 @NgModule({
   declarations: [
     AppComponent,
-    RoomsComponent,
-    RoomsListComponent,
-    HeaderComponent,
     ContainerComponent,
     EmployeeComponent,
     AppNavComponent,
     NotfoundComponent,
-    RoomsBookingComponent,
-    RoomAddComponent,
     LoginComponent,
+    HoverDirective,
+    EmailvalidatorDirective,
+    
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,FormsModule],
+  imports: [BrowserModule,RoomsModule,AppRoutingModule, HttpClientModule, BrowserAnimationsModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,FormsModule,],
   providers: [
     {
       provide: APP_SERVICE_CONFIG,

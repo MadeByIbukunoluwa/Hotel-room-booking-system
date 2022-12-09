@@ -14,10 +14,13 @@
 <div *ngIf="selectedRoom">
         {{selectedRoom | json}}
 </div>
+<router-outlet>
 
+</router-outlet>
 
 <div>
-    <button (click)="addRoom()">
+    <!-- <button (click)="addRoom()"> -->
+    <button routerLink="add">
         Add Room
     </button>
 </div>

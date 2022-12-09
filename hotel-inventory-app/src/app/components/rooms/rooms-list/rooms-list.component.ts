@@ -1,5 +1,14 @@
-import { Component, OnInit,Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
-import { RoomList } from '../rooms/rooms';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { RoomList } from '../rooms';
 
 @Component({
   selector: 'hinv-rooms-list',
