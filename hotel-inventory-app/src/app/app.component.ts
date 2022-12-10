@@ -2,6 +2,9 @@ import { AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, ViewChi
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoggerService } from './logger.service';
 import {LocalStorageToken} from './localstorage.token'
+import { ConfigService } from './components/services/config.service';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs';
 @Component({
   selector: 'hinv-root',
   templateUrl: './app.component.html',
@@ -15,7 +18,9 @@ export class AppComponent implements OnInit {
   role = 'Admin'
 
   constructor(@Optional() private loggerService: LoggerService,
-  @Inject(LocalStorageToken) private localStorage:Storage) {
+  @Inject(LocalStorageToken) private localStorage:Storage,
+  private configService: ConfigService,
+  private router : Router) {
 
   }
   // @ViewChild(`name`,{static:true}) name!:ElementRef;
@@ -27,6 +32,20 @@ export class AppComponent implements OnInit {
   // }
  
 ngOnInit() {
+  // this.router.events.subscribe((event)=> {
+  //   console.log(event)
+  // })
+  this.router.events.pipe(
+      filter((event)=> event instanceof NavigationStart)).subscribe((event) => {
+        console.log('Navigation Started')
+      }
+    )
+  this.router.events.pipe(
+    filter((event) => event instanceof NavigationEnd)).subscribe((event) => {
+      console.log('Navigation Ended')
+    }
+  );
+
   this.loggerService?.log(`AppComponent.ngOnInit()`)
   // this.name.nativeElement.innerText = 'Ibukunoluwa Hotel'
   this.localStorage.setItem('name','Ibukunoluwa Hotel')

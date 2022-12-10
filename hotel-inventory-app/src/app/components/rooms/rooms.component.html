@@ -8,16 +8,13 @@
     <div [ngStyle] = "{'color' : rooms.availableRooms ? 'green' : 'red'}" [innerText]="numberOfRooms"></div>
 </div>
  
-{{rooms?.availableRooms ?? "no rooms"}}
+<!-- {{rooms?.availableRooms ?? "no rooms"}} -->
 
 <!-- {{roomlist | json}} -->
 <div *ngIf="selectedRoom">
         {{selectedRoom | json}}
 </div>
-<router-outlet>
-
-</router-outlet>
-
+<router-outlet></router-outlet>;<!--The router outlet renders the componetn, based on the specified route under it -->
 <div>
     <!-- <button (click)="addRoom()"> -->
     <button routerLink="add">

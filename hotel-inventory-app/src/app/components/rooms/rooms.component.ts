@@ -2,6 +2,7 @@ import { HttpEventType } from '@angular/common/http';
 import { Component,DoCheck,OnDestroy, OnInit,AfterViewInit, ViewChild, AfterViewChecked, ViewChildren, QueryList } from '@angular/core';
 import { catchError, Observable, of, Subscription,Subject,map } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
+import { ConfigService } from '../services/config.service';
 import { Room, RoomList } from './rooms';
 import { RoomsService } from './services/rooms.service';
 @Component({
@@ -56,7 +57,8 @@ roomsCount$ = this.roomsService.getRooms$.pipe(
 @ViewChildren(HeaderComponent)headerChildrenComponent!: QueryList<HeaderComponent> 
 
 title!:string;
-  constructor(private roomsService : RoomsService){
+  constructor(private roomsService : RoomsService,private configService:ConfigService){
+    
   }
       ngOnInit(): void {
           this.roomsService.getPhotos().subscribe((event)=> {

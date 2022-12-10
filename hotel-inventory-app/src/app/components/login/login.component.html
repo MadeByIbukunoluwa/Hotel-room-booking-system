@@ -1,4 +1,21 @@
 
+
+<form >
+    <div class="form-group">
+        <input  hinvEmailvalidator hinvHover="green" color='green' type="email" class="form-control" >
+    </div>
+    
+    <div  class="form-group">
+        <input hinvHover type="password" class="form-control" name="name" >
+    </div>
+
+    <div class="form-group" >
+        <button class="btn btn-primary" (click)="Login()">
+     Login
+    </button>
+</div>
+
+</form> 
 <!-- 
 <form >
     <div class="form-group">
@@ -7,7 +24,7 @@
             {{emailControl.errors | json}}
         </div>
     </div>
-
+    
     <div  class="form-group">
         <input hinvHover type="password" class="form-control" name="name" [(ngmodel)] = "password">
     </div>

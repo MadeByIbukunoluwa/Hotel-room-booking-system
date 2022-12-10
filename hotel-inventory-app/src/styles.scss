@@ -9,7 +9,11 @@
     background-color: tomato;
     color: white;
 }
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+.mat-mdc-form-field {
+    width:100%;
+}
+
+// @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 html,

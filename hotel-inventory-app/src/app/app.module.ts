@@ -24,6 +24,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HoverDirective } from './hover.directive';
 import { EmailvalidatorDirective } from './emailvalidator/emailvalidator.directive';
 import { RoomsModule } from './components/rooms/rooms.module';
+import { RouteConfigToken } from './components/services/routeConfig.service';
+import { LoginGuard } from './guards/login.guard';
 
 function initFactory (initService: InitService) {
     return () => initService.init()
@@ -52,11 +54,17 @@ function initFactory (initService: InitService) {
       multi:true 
     },
     {
+      provide:RouteConfigToken,
+      useValue:{title:'Home'} 
+    },
+    {
       provide:APP_INITIALIZER,
       useFactory:initFactory,
       deps:[InitService],
       multi:true
     }
+    ,
+   LoginGuard
   ],
   bootstrap: [AppComponent],
 })

@@ -17,6 +17,6 @@ export class EmployeeComponent implements OnInit, AfterContentInit {
   }
   ngAfterContentInit(): void {
     this.employee.empname = 'spartacus'
-    console.log(this.employee)
+    // console.log(this.employee)
   }
 }
