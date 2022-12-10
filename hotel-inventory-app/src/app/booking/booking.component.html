@@ -6,17 +6,18 @@
 
 
 <form [formGroup]="bookingForm" (ngSubmit)="addBooking()">
-<mat-form-field >
-    <mat-label>Room Id</mat-label>
-    <input type="email" matInput formControlName = "roomId" 
-        placeholder="Room Id">
-    <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-        Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="emailFormControl.hasError('required')">
-        Email is <strong>required</strong>
-    </mat-error> -->
+<mat-form-field  *ngIf="bookingForm.get('passport')">
+    <mat-label>Passport</mat-label>
+    <input type="email" matInput formControlName = "passport" 
+        placeholder="Passport Number"> 
+   
 </mat-form-field>
+<div>
+    <button type="submit" mat-raised-button color="primary" (click)="addPassport()">Add Passport</button>
+</div>
+<div>
+    <button type="submit" mat-raised-button color="primary" (click)="deletePassport()">Delete Passport</button>
+</div>
     <mat-form-field >
         <mat-label>First name</mat-label>
         <input matInput type = "text">
@@ -71,13 +72,15 @@
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                   Address
+                  Guests
                 </mat-panel-title>
             </mat-expansion-panel-header>
     
             <mat-form-field >
                 <mat-label>AddressLine1</mat-label>
                 <input matInput formControlName="addressLine1">
+                <mat-error *ngif="bookingForm.get('address.addressLine1')?.hasError('required')">Address Line1 is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
     
             <mat-form-field >
@@ -111,19 +114,37 @@
 <div>
     <button type= "submit" mat-raised-button color="primary" (click) ="addGuest()">Add Guest</button>
 </div>
+
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
 <div formArrayName="guests">
     <div *ngFor="let guest of guests.controls; let i = index">
+        <!-- from group name should be unique so we use the index to create it dynamically -->
             <div [formGroupName] ="i">
+               
                 <mat-form-field>
-                    <input type="text" matInput formControlName="guestName" placeholder="Enter your phone number">
+                    <input type="text" matInput formControlName="guestName" placeholder="Guest Name">
+                    <mat-error *ngif="bookingForm.get(['guests',i,'guestName'])?.hasError('required')"> </mat-error>
+                    <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error> -->
                 </mat-form-field>
                 <mat-form-field>
                     <input type= "number" matInput formControlName="age" placeholder="Age">
                 </mat-form-field>
             </div>
+            <div>
+                <button type="submit" mat-raised-button color="primary" (click)="removeGuest(i)">Remove Guest</button>
+            </div>
+        </div>
     </div>
-</div>
-<div>
-    <button type= "submit" mat-raised-button color="primary">Book Room</button>
+    </mat-expansion-panel>
+</mat-accordion>
+    <div>
+        <button type= "submit" mat-raised-button color="primary">Book Room</button>
 </div>
 </form>
+
