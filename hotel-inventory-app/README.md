@@ -31,3 +31,5 @@ Important notes for self
 followed the youtube tutorial - stopped at 14.14.32 - refactoring the functions - in the forms sectione
 
 this project still has bugs and errors in the console 
+
+for the styles uncomment the bootstrap css link in the styles.css
